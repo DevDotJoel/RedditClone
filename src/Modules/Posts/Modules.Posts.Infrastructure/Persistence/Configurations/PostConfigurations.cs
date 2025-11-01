@@ -12,6 +12,13 @@ namespace Modules.Posts.Infrastructure.Persistence.Configurations
             builder.ToTable("Posts");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasConversion(v => v.Value, src => PostId.Create(src)).ValueGeneratedNever();
+
+            builder.Property(x => x.Title)
+                .IsRequired()
+                .HasMaxLength(300);
+
+            builder.Property(x => x.Content)
+                .HasMaxLength(40000);
         }
     }
 }
