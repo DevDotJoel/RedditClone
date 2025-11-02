@@ -12,8 +12,8 @@ using Modules.Posts.Infrastructure.Persistence;
 namespace Modules.Posts.Infrastructure.Migrations
 {
     [DbContext(typeof(PostsDbContext))]
-    [Migration("20251101180223_Init")]
-    partial class Init
+    [Migration("20251102015408_Ini")]
+    partial class Ini
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,7 @@ namespace Modules.Posts.Infrastructure.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
+                        .HasMaxLength(40000)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -42,7 +43,8 @@ namespace Modules.Posts.Infrastructure.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.HasKey("Id");
 
