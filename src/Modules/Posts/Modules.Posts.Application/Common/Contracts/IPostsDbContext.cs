@@ -12,5 +12,6 @@ namespace Modules.Posts.Application.Common.Contracts
     {
         DbSet<Post> Posts { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+        
     }
 }

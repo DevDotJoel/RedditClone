@@ -26,6 +26,7 @@ namespace Modules.Posts.Application.Posts.Commands.Create
         {
             var post = Post.Create(request.Title, request.Content);
             await _context.Posts.AddAsync(post,cancellationToken);
+            
             await _context.SaveChangesAsync();
             return _mapper.Map<PostModel>(post);
         }
